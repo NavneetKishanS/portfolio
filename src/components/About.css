@@ -1,42 +1,35 @@
 .about-section {
+  display: flex;
+  justify-content: center;
   padding: 60px 20px;
-  text-align: center;
   font-family: "Inter", sans-serif;
 }
 
-.about-section h2 {
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #111;
-  transition: color 0.3s ease;
+/* Fixed rectangle container */
+.about-card {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease;
 }
 
-/* Dark mode heading */
-[data-theme="dark"] .about-section h2 {
-  color: #fff;
+/* Light/Dark backgrounds for text area */
+.text-area {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
 }
 
-.card {
-  display: inline-block;
-  background-color: #011522;
-  border-radius: 8px;
-  text-align: left;
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
-  padding-bottom: 20px;
-  max-width: 600px;
-  width: 90%;
-  box-sizing: border-box;
+[data-theme="dark"] .text-area {
+  background: #011522;
 }
 
-/* Light mode background */
-[data-theme="light"] .card {
-  background-color: #f9fafb;
-}
-
-.card:hover {
-  box-shadow: 0 8px 30px rgba(0, 140, 255, 0.25);
-}
-
+/* Top bar with circles */
 .tools {
   display: flex;
   align-items: center;
@@ -44,41 +37,66 @@
 }
 
 .circle {
-  padding: 0 4px;
-}
-
-.box {
-  display: inline-block;
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  margin-right: 6px;
 }
 
-.red {
-  background-color: #ff605c;
-}
-.yellow {
-  background-color: #ffbd44;
-}
-.green {
-  background-color: #00ca4e;
-}
+.red { background-color: #ff5f57; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #28c840; }
 
+/* Text content */
 .card__content {
   padding: 0 20px;
+  overflow-y: auto;
 }
 
 .card__content p {
   font-family: monospace;
   font-size: 0.95rem;
-  color: #e0e0e0;
+  color: #333;
   margin: 0;
-  white-space: pre-wrap;
-  line-height: 1.6;
-  transition: color 0.3s ease;
 }
 
-/* Light mode text color */
-[data-theme="light"] .card__content p {
+[data-theme="dark"] .card__content p {
+  color: #e0e0e0;
+}
+
+/* Image area */
+.image-area {
+  flex: 1 1 50%;
+  position: relative;
+  background: #000;
+}
+
+[data-theme="light"] .image-area {
+  background: #e0e0e0;
+}
+
+.image-area img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 1s ease;
+}
+
+/* Caption overlay */
+.caption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(255,255,255,0.75);
   color: #333;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+[data-theme="dark"] .caption {
+  background: rgba(0,0,0,0.6);
+  color: #eee;
 }
