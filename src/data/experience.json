@@ -1,0 +1,26 @@
+[
+  {
+    "role": "Software Engineer",
+    "company": "Company A",
+    "start": "2022-01",
+    "end": "Present",
+    "description": "Working on scalable web applications.",
+    "logo": "/assets/logo1.png"
+  },
+  {
+    "role": " Engineer",
+    "company": "Company A",
+    "start": "2022-01",
+    "end": "Present",
+    "description": "Working on scalable web applications.",
+    "logo": "/assets/logo1.png"
+  },
+  {
+    "role": "Frontend Developer",
+    "company": "Company B",
+    "start": "2020-06",
+    "end": "2021-12",
+    "description": "Built reusable UI components.",
+    "logo": "/assets/logo1.png"
+  }
+]
