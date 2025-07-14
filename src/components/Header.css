@@ -1,0 +1,76 @@
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  margin: 20px auto;
+  max-width: 1200px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark mode background */
+[data-theme="dark"] .custom-navbar {
+  background: #1f1f1f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-left .navbar-logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #111;
+  transition: color 0.3s ease;
+}
+
+/* Dark mode logo text */
+[data-theme="dark"] .navbar-left .navbar-logo {
+  color: #f1f1f1;
+}
+
+.navbar-center {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-center a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.navbar-center a:hover {
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+}
+
+/* Dark mode nav links */
+[data-theme="dark"] .navbar-center a {
+  color: #ddd;
+}
+[data-theme="dark"] .navbar-center a:hover {
+  background: rgba(0, 123, 255, 0.2);
+  color: #ffffff;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  .custom-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .navbar-center {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
