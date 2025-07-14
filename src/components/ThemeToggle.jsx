@@ -1,23 +1,22 @@
-// src/components/ThemeToggle.jsx
+// ThemeToggle.jsx
 import React, { useContext } from "react";
 import { ThemeContext } from "../ThemeContext";
+import "./ThemeToggle.css";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <button
-      onClick={toggleTheme}
-      style={{
-        background: "none",
-        border: "1px solid #ccc",
-        borderRadius: "20px",
-        padding: "6px 12px",
-        cursor: "pointer",
-        color: theme === "dark" ? "#fff" : "#333"
-      }}
-    >
-      {theme === "dark" ? "🌞 Light" : "🌙 Dark"}
-    </button>
+    <label className="ui-switch">
+      <input
+        type="checkbox"
+        onChange={toggleTheme}
+        checked={theme === "dark"}
+        aria-label="Toggle dark mode"
+      />
+      <div className="slider">
+        <div className="circle"></div>
+      </div>
+    </label>
   );
 }
