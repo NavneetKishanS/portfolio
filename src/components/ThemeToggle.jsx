@@ -1,3 +1,4 @@
+// src/components/ThemeToggle.jsx
 import React, { useContext } from "react";
 import { ThemeContext } from "../ThemeContext";
 
@@ -9,11 +10,11 @@ export default function ThemeToggle() {
       onClick={toggleTheme}
       style={{
         background: "none",
-        border: "1px solid var(--accent-color)",
+        border: "1px solid #ccc",
         borderRadius: "20px",
-        padding: "5px 12px",
+        padding: "6px 12px",
         cursor: "pointer",
-        color: "var(--text-color)"
+        color: theme === "dark" ? "#fff" : "#333"
       }}
     >
       {theme === "dark" ? "🌞 Light" : "🌙 Dark"}

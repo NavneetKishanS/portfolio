@@ -1,18 +1,21 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useLayoutEffect } from "react";
 
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("dark");
-
-  useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      setTheme(storedTheme);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== "undefined") {
+      // Try to get stored theme
+      const stored = localStorage.getItem("theme");
+      if (stored === "dark" || stored === "light") {
+        return stored;
+      }
     }
-  }, []);
+    // Default to light
+    return "light";
+  });
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }, [theme]);
