@@ -5,7 +5,6 @@
   font-family: "Inter", sans-serif;
 }
 
-/* Fixed rectangle container */
 .about-card {
   display: flex;
   width: 100%;
@@ -17,7 +16,11 @@
   transition: box-shadow 0.3s ease;
 }
 
-/* Light/Dark backgrounds for text area */
+.about-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 140, 255, 0.25);
+}
+
+/* Left side (terminal look) */
 .text-area {
   flex: 1 1 50%;
   display: flex;
@@ -29,7 +32,6 @@
   background: #011522;
 }
 
-/* Top bar with circles */
 .tools {
   display: flex;
   align-items: center;
@@ -47,24 +49,32 @@
 .yellow { background-color: #ffbd2e; }
 .green { background-color: #28c840; }
 
-/* Text content */
+/* Center and justify text */
 .card__content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0 20px;
-  overflow-y: auto;
 }
 
 .card__content p {
   font-family: monospace;
   font-size: 0.95rem;
-  color: #333;
+  line-height: 1.6;
   margin: 0;
+  text-align: justify;
 }
 
 [data-theme="dark"] .card__content p {
   color: #e0e0e0;
 }
 
-/* Image area */
+[data-theme="light"] .card__content p {
+  color: #333;
+}
+
+/* Right side (slideshow) */
 .image-area {
   flex: 1 1 50%;
   position: relative;
@@ -75,12 +85,21 @@
   background: #e0e0e0;
 }
 
+/* All images, stacked */
 .image-area img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  opacity: 0;
   transition: opacity 1s ease;
+}
+
+/* Active image */
+.image-area img.active {
+  opacity: 1;
 }
 
 /* Caption overlay */
