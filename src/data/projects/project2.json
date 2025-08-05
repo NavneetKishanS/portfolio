@@ -1,0 +1,12 @@
+{
+  "id": "project2",
+  "title": "Task Manager 2",
+  "dates": "Jan 2023 – May 2023",
+  "description": [
+    "Built a task management tool using React.",
+    "Implemented drag and drop features with DnD kit.",
+    "Integrated Firebase for authentication and storage."
+  ],
+  "techStack": ["react", "firebase", "tailwindcss"],
+  "thumbnail": "/images/projects/taskmanager.png"
+}
