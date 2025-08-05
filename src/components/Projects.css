@@ -1,13 +1,10 @@
+/* === Section (always light) === */
 .projects-section {
   padding: 4rem 2rem;
   text-align: center;
   background-color: #ffffff;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-body.dark .projects-section {
-  background-color: #0e0e11;
-  color: #ffffff;
+  color: #000000;
+  transition: background 0.3s, color 0.3s;
 }
 
 .section-title {
@@ -16,7 +13,7 @@ body.dark .projects-section {
   margin-bottom: 2rem;
 }
 
-/* Scroll logic */
+/* === Scroll Animation === */
 .projects-scroll-wrapper {
   overflow: hidden;
   width: 100%;
@@ -43,49 +40,39 @@ body.dark .projects-section {
   }
 }
 
-/* Card Styling */
+/* === Project Card (Light mode default) === */
 .project-card {
   background-color: #ffffff;
-  color: #000000;
+  color: #111111;
   border-radius: 1rem;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   overflow: hidden;
   width: 320px;
-  height: 420px;
   flex-shrink: 0;
-  transition: all 0.3s ease;
-  border: 1px solid #e0e0e0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-body.dark .project-card {
-  background-color: #1a1a1d;
-  color: #ffffff;
-  border: 1px solid #2a2a2a;
-  box-shadow: 0 6px 14px rgba(255, 255, 255, 0.05);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .project-card:hover {
-  box-shadow: 0 0 20px rgba(0, 140, 255, 0.25);
-  transform: translateY(-5px);
+  transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(0, 191, 255, 0.4);
 }
 
-/* Thumbnail image */
 .project-thumbnail {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 1rem 1rem 0 0;
 }
 
-/* Card Content */
 .project-card-content {
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .project-title {
@@ -94,12 +81,9 @@ body.dark .project-card {
 }
 
 .project-dates {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #555;
-}
-
-body.dark .project-dates {
-  color: #aaa;
+  margin-top: -4px;
 }
 
 .project-desc {
@@ -108,24 +92,38 @@ body.dark .project-dates {
   font-size: 0.9rem;
   text-align: left;
   padding-left: 1.2rem;
-  flex-grow: 1;
+  margin-top: 0.5rem;
+  line-height: 1.4rem;
 }
 
 .tech-logos {
   display: flex;
   gap: 0.75rem;
   justify-content: center;
-  margin-top: auto;
+  margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
 .tech-logo {
   width: 24px;
   height: 24px;
-  object-fit: contain;
-  filter: none;
-  transition: transform 0.3s ease;
 }
 
-.tech-logo:hover {
-  transform: scale(1.1);
+/* === Dark mode support — using [data-theme="dark"] (like Experience) === */
+[data-theme="dark"] .project-card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #333;
+}
+
+[data-theme="dark"] .project-dates {
+  color: #aaa;
+}
+
+[data-theme="dark"] .project-desc {
+  color: #ddd;
+}
+
+[data-theme="dark"] .project-card:hover {
+  box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
 }
