@@ -58,13 +58,28 @@
   padding: 0 20px;
 }
 
-.card__content p {
-  font-family: monospace;
+.card__content {
+  padding: 1rem 1.5rem;
+  color: #f1f1f1;
+  font-family: "Fira Code", "Courier New", monospace;
   font-size: 0.95rem;
-  line-height: 1.6;
-  margin: 0;
-  text-align: justify;
+  line-height: 1.65rem;
+  text-align: left;
+
+  /* ✅ Proper text wrapping and spacing */
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+
+  /* ✅ Aesthetic smooth look */
+  max-width: 95%;
+  margin: 0 auto;
 }
+
+.about-paragraph {
+  margin-bottom: 1.2rem; /* space between paragraphs */
+}
+
 
 [data-theme="dark"] .card__content p {
   color: #e0e0e0;
@@ -118,4 +133,54 @@
 [data-theme="dark"] .caption {
   background: rgba(0,0,0,0.6);
   color: #eee;
+}
+
+.card__content.terminal-output {
+  padding: 1.5rem;
+  color: #f1f1f1;
+  font-family: "Fira Code", monospace;
+  font-size: 0.95rem;
+  line-height: 1.65rem;
+  text-align: left;
+  min-height: 200px;
+  transition: color 0.3s ease;
+  overflow: hidden;
+}
+
+/* Fading effect for each paragraph */
+.fade-text {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.about-paragraph {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Blinking cursor */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: #00bfff;
+  margin-left: 3px;
+  animation: blink 1s step-end infinite;
+  height: 1rem;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Optional: make it smoother on dark background */
+.text-area {
+  background: #0e0e11;
+  border-radius: 0 0 0 16px;
+}
+[data-theme="dark"] .text-area {
+  background: #0b0d17;
 }

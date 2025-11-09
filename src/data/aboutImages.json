@@ -1,10 +1,18 @@
 [
   {
-    "filename": "presentation1.jpg",
-    "caption": "Presenting research at ACM Conference"
+    "filename": "tdk_presentation.jpeg",
+    "caption": "Presenting MedLedger at TDK Conference"
   },
   {
-    "filename": "research1.jpg",
-    "caption": "Poster session at Graduate Symposium"
+    "filename": "quiz_gdg.jpg",
+    "caption": "Hosting Quiz at Google Dev Group Event"
+  },
+  {
+    "filename": "tdk_presentation2.jpg",
+    "caption": "Presenting MedLedger at TDK Conference"
+  },
+  {
+    "filename": "grad.png",
+    "caption": "BSc Graduation"
   }
 ]
