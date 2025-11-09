@@ -142,3 +142,45 @@
 .hero-icons-vertical img:hover {
   filter: none;
 }
+
+/* === Typing Animation === */
+.subtitle {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #333;
+  font-weight: 400;
+}
+
+.typed-text {
+  color: #007bff; /* soft blue accent for profession text */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.cursor {
+  display: inline-block;
+  background-color: #007bff;
+  width: 2px;
+  height: 1.2rem;
+  margin-left: 4px;
+  animation: blink 0.7s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Dark Mode Support */
+[data-theme="dark"] .subtitle {
+  color: #f0f0f0;
+}
+
+[data-theme="dark"] .typed-text {
+  color: #00bfff;
+}
+
+[data-theme="dark"] .cursor {
+  background-color: #00bfff;
+}

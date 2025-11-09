@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import profilePic from "../assets/dp.jpg";
 import "./Hero.css";
 
 export default function Hero() {
+  const roles = ["Software Engineer", "MSc Student", "Researcher", "Developer"];
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const current = roles[index % roles.length];
+    const speed = isDeleting ? 60 : 120;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && text.length < current.length) {
+        setText(current.substring(0, text.length + 1));
+      } else if (isDeleting && text.length > 0) {
+        setText(current.substring(0, text.length - 1));
+      } else if (!isDeleting && text.length === current.length) {
+        setTimeout(() => setIsDeleting(true), 1500);
+      } else if (isDeleting && text.length === 0) {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % roles.length);
+      }
+    }, speed);
+
+    return () => clearTimeout(timeout);
+  }, [text, isDeleting, index, roles]);
+
   return (
     <section id="hero" className="hero-section">
       <div className="hero-card">
@@ -13,9 +38,8 @@ export default function Hero() {
             I’m <strong>John Doe</strong>
           </h1>
           <p className="subtitle">
-            Software Engineer,<br />
-            MSc Student,<br />
-            etc
+            <span className="typed-text">{text}</span>
+            <span className="cursor">|</span>
           </p>
           <div className="hero-buttons">
             <button className="primary">Resume/CV</button>

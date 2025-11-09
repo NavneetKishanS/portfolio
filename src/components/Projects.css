@@ -5,6 +5,7 @@
   background-color: #ffffff;
   color: #000000;
   transition: background 0.3s, color 0.3s;
+  font-family: var(--font-primary, "Inter", "Helvetica Neue", sans-serif);
 }
 
 .section-title {
@@ -26,17 +27,18 @@
 
 .projects-scroll {
   display: flex;
-  gap: 2rem;
-  animation: scroll-left 40s linear infinite;
+  gap: 1rem; /* smaller gap for smoother loop */
+  animation: scroll-left 35s linear infinite;
   width: max-content;
+  will-change: transform; /* smooths animation */
 }
 
 @keyframes scroll-left {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-50%); /* ensures exact half scroll for duplicated items */
   }
 }
 
@@ -55,6 +57,7 @@
     transform 0.3s ease,
     background-color 0.3s ease,
     color 0.3s ease;
+  font-family: var(--font-primary, "Inter", "Helvetica Neue", sans-serif);
 }
 
 .project-card:hover {
@@ -73,17 +76,19 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  text-align: left;
 }
 
 .project-title {
-  font-weight: 700;
-  font-size: 1.25rem;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .project-dates {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #555;
   margin-top: -4px;
+  font-weight: 400;
 }
 
 .project-desc {
@@ -93,7 +98,8 @@
   text-align: left;
   padding-left: 1.2rem;
   margin-top: 0.5rem;
-  line-height: 1.4rem;
+  line-height: 1.45rem;
+  color: #333;
 }
 
 .tech-logos {

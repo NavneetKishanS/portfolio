@@ -8,20 +8,10 @@ export default function Projects() {
   useEffect(() => {
     try {
       const context = require.context("../data/projects", false, /\.json$/);
-      const loaded = context.keys()
-        .map((key) => {
-          try {
-            return context(key);
-          } catch (error) {
-            console.error("Error loading project JSON:", key, error);
-            return null;
-          }
-        })
-        .filter((proj) => proj && proj.title); // Ensure only valid projects
-
+      const loaded = context.keys().map((key) => context(key));
       setProjects(loaded);
-    } catch (error) {
-      console.error("Failed to load projects:", error);
+    } catch (err) {
+      console.error("Failed to load projects:", err);
     }
   }, []);
 
@@ -35,39 +25,43 @@ export default function Projects() {
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="projects-scroll">
-          {[...projects, ...projects].map((proj, index) => (
-            <div className="project-card" key={index}>
-              {proj.thumbnail && (
-                <img
-                  src={proj.thumbnail}
-                  alt={proj.title}
-                  className="project-thumbnail"
-                />
-              )}
+          {[...projects, ...projects].map((proj, index) => {
+            if (!proj || !proj.title) return null;
 
-              <div className="project-card-content">
-                <h3 className="project-title">{proj.title}</h3>
-                <p className="project-dates">{proj.dates}</p>
+            return (
+              <div className="project-card" key={index}>
+                {proj.thumbnail && (
+                  <img
+                    src={proj.thumbnail}
+                    alt={proj.title}
+                    className="project-thumbnail"
+                  />
+                )}
 
-                <ul className="project-desc">
-                  {(proj.description || []).map((line, idx) => (
-                    <li key={idx}>{line}</li>
-                  ))}
-                </ul>
+                <div className="project-card-content">
+                  <h3 className="project-title">{proj.title}</h3>
+                  <p className="project-dates">{proj.dates}</p>
 
-                <div className="tech-logos">
-                  {(proj.techStack || []).map((tech, idx) => (
-                    <img
-                      key={idx}
-                      src={`/logos/${tech}.svg`}
-                      alt={tech}
-                      className="tech-logo"
-                    />
-                  ))}
+                  <ul className="project-desc">
+                    {(proj.description || []).map((line, idx) => (
+                      <li key={idx}>{line}</li>
+                    ))}
+                  </ul>
+
+                  <div className="tech-logos">
+                    {(proj.techStack || []).map((tech, idx) => (
+                      <img
+                        key={idx}
+                        src={`/logos/${tech}.svg`}
+                        alt={tech}
+                        className="tech-logo"
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
