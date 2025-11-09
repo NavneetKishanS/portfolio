@@ -1,16 +1,22 @@
+/* === Experience Section === */
 .experience-section {
-  background: white;
+  background: #ffffff;
   padding: 60px 20px;
-  font-family: 'Inter', sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: "Inter", sans-serif;
+  border-radius: 16px;
+  max-width: 1100px; /* ✅ consistent width with other sections */
+  margin: 0 auto 60px auto; /* center horizontally + spacing below */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Dark mode background */
+/* === Dark Mode === */
 [data-theme="dark"] .experience-section {
-  background: #0e0e11;
+  background: #0b0d17; /* ✅ navy-dark tone for dark mode consistency */
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
 }
 
-/* Heading */
+/* === Heading === */
 .experience-section h2 {
   text-align: center;
   font-size: 2.25rem;
@@ -23,13 +29,15 @@
   color: #ffffff;
 }
 
-/* Timeline line */
+/* === Timeline Container === */
 .timeline-container {
   position: relative;
-  max-width: 1000px;
+  max-width: 900px; /* ✅ slightly smaller for inner alignment */
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 20px;
 }
+
+/* Timeline line */
 .timeline-line {
   position: absolute;
   left: 50%;
@@ -42,13 +50,13 @@
   transition: background 0.3s ease;
 }
 [data-theme="dark"] .timeline-line {
-  background: #2d2d2d;
+  background: #2a2d3a;
 }
 
-/* Timeline items */
+/* === Timeline Items === */
 .timeline-item {
   position: relative;
-  width: 48%;
+  width: 46%;
   background: #ffffff;
   padding: 20px;
   border-radius: 16px;
@@ -60,8 +68,8 @@
   z-index: 1;
 }
 [data-theme="dark"] .timeline-item {
-  background: #1a1a1d;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  background: #171a24;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.04);
 }
 
 .timeline-item:hover {
@@ -69,7 +77,7 @@
   transform: translateY(-5px);
 }
 [data-theme="dark"] .timeline-item:hover {
-  box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
 }
 
 /* Alignment */
@@ -86,7 +94,7 @@
   margin-left: auto;
 }
 
-/* Logo */
+/* === Logo === */
 .timeline-logo img {
   width: 50px;
   height: 50px;
@@ -98,10 +106,10 @@
   transition: background 0.3s ease;
 }
 [data-theme="dark"] .timeline-logo img {
-  background: #2b2b2e;
+  background: #202330;
 }
 
-/* Content */
+/* === Content === */
 .timeline-content {
   max-width: 400px;
 }
@@ -143,7 +151,7 @@
   color: #e5e7eb;
 }
 
-/* Responsive */
+/* === Responsive === */
 @media (max-width: 768px) {
   .timeline-item,
   .timeline-item.left,

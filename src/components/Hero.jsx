@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import profilePic from "../assets/dp.jpg";
+import profilePic from "../assets/profile.png";
 import "./Hero.css";
 
 export default function Hero() {
@@ -34,8 +34,9 @@ export default function Hero() {
         {/* Text */}
         <div className="hero-text">
           <p className="intro">Hi there,</p>
+          <p className="intro">I'm</p>
           <h1>
-            I’m <strong>John Doe</strong>
+            <strong>Navneet Kishan Srinivasan</strong>
           </h1>
           <p className="subtitle">
             <span className="typed-text">{text}</span>
@@ -54,25 +55,25 @@ export default function Hero() {
 
         {/* Vertical Social Icons */}
         <div className="hero-icons-vertical">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://github.com/NavneetKishanS" target="_blank" rel="noopener noreferrer">
             <img
               src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg"
               alt="GitHub"
             />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.linkedin.com/in/navneet-kishan-s/" target="_blank" rel="noopener noreferrer">
             <img
               src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/linkedin.svg"
               alt="LinkedIn"
             />
           </a>
-          <a href="https://kaggle.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.kaggle.com/navneetkishans" target="_blank" rel="noopener noreferrer">
             <img
               src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/kaggle.svg"
               alt="Kaggle"
             />
           </a>
-          <a href="https://researchgate.net" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.researchgate.net/profile/Navneet-Kishan-Srinivasan" target="_blank" rel="noopener noreferrer">
             <img
               src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/researchgate.svg"
               alt="ResearchGate"

@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <header className="custom-navbar">
       <div className="navbar-left">
-        <span className="navbar-logo">My Portfolio</span>
+        <span className="navbar-logo">Navneet's Portfolio</span>
       </div>
       <nav className="navbar-center">
         <a href="#about">About</a>

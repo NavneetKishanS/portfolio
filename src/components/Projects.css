@@ -1,11 +1,21 @@
-/* === Section (always light) === */
+/* === Section Container === */
 .projects-section {
   padding: 4rem 2rem;
   text-align: center;
   background-color: #ffffff;
   color: #000000;
-  transition: background 0.3s, color 0.3s;
+  border-radius: 16px;
+  max-width: 1100px; /* ✅ consistent width */
+  margin: 0 auto 60px auto;
+  transition: background 0.3s ease, color 0.3s ease;
   font-family: var(--font-primary, "Inter", "Helvetica Neue", sans-serif);
+}
+
+/* === Dark Mode Section === */
+[data-theme="dark"] .projects-section {
+  background-color: #0b0d17; /* ✅ navy-dark like Experience */
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
 }
 
 .section-title {
@@ -27,10 +37,10 @@
 
 .projects-scroll {
   display: flex;
-  gap: 1rem; /* smaller gap for smoother loop */
+  gap: 1rem;
   animation: scroll-left 35s linear infinite;
   width: max-content;
-  will-change: transform; /* smooths animation */
+  will-change: transform;
 }
 
 @keyframes scroll-left {
@@ -38,11 +48,11 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%); /* ensures exact half scroll for duplicated items */
+    transform: translateX(-50%);
   }
 }
 
-/* === Project Card (Light mode default) === */
+/* === Project Card === */
 .project-card {
   background-color: #ffffff;
   color: #111111;
@@ -79,6 +89,7 @@
   text-align: left;
 }
 
+/* === Typography === */
 .project-title {
   font-weight: 600;
   font-size: 1.2rem;
@@ -115,21 +126,32 @@
   height: 24px;
 }
 
-/* === Dark mode support — using [data-theme="dark"] (like Experience) === */
+/* === Dark Mode Cards === */
 [data-theme="dark"] .project-card {
-  background-color: #1e1e1e;
+  background-color: #171a24; /* ✅ Same as Experience cards */
   color: #ffffff;
-  border: 1px solid #333;
+  border: 1px solid #2d2d2d;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.04);
 }
 
-[data-theme="dark"] .project-dates {
-  color: #aaa;
+/* Ensure all text is bright white for dark mode */
+[data-theme="dark"] .project-card,
+[data-theme="dark"] .project-card * {
+  color: #ffffff !important;
 }
 
-[data-theme="dark"] .project-desc {
-  color: #ddd;
-}
-
+/* Hover glow */
 [data-theme="dark"] .project-card:hover {
-  box-shadow: 0 0 30px rgba(0, 191, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.35);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .projects-scroll {
+    gap: 0.75rem;
+  }
+
+  .project-card {
+    width: 260px;
+  }
 }

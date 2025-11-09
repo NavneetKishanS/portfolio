@@ -5,7 +5,7 @@ import { FaEnvelope, FaLinkedin, FaGithub, FaMapMarkerAlt } from "react-icons/fa
 export default function Contact() {
   return (
     <section id="contact" className="contact-section">
-      <h2 className="section-title">Contact</h2>
+      <h2 className="section-title">Contact Me</h2>
 
       <div className="contact-card">
         <div className="contact-header">
