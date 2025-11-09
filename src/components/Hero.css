@@ -145,6 +145,10 @@
 
 /* === Typing Animation === */
 .subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
   font-size: 1.2rem;
   margin-top: 1rem;
   color: #333;
@@ -152,20 +156,32 @@
 }
 
 .typed-text {
-  color: #007bff; /* soft blue accent for profession text */
+  color: #007bff;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
 
 .cursor {
-  display: inline-block;
-  background-color: #007bff;
+  position: relative;
+  top: -1px;              /* Aligns cleanly with text baseline */
   width: 2px;
-  height: 1.2rem;
-  margin-left: 4px;
-  animation: blink 0.7s infinite;
-  vertical-align: middle;
+  height: 1.25rem;
+  background: #007bff;
+  animation: blink 0.7s steps(1) infinite;
+  transform: translateZ(0); /* forces GPU render = crisp pixel edges */
+
+  /* Kill any rendering bleed or smoothing */
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-font-smoothing: none !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  mix-blend-mode: normal;
+  image-rendering: pixelated;
+  contain: strict;
 }
+
+
 
 @keyframes blink {
   0%, 50% { opacity: 1; }
