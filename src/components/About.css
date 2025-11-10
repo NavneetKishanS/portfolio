@@ -12,26 +12,28 @@
   height: 400px;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .about-card:hover {
   box-shadow: 0 8px 30px rgba(0, 140, 255, 0.25);
 }
 
-/* Left side (terminal look) */
+/* === Left Side (Terminal Look) === */
 .text-area {
   flex: 1 1 50%;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
+  background: #ffffff; /* ✅ default light mode */
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 [data-theme="dark"] .text-area {
-  background: #011522;
+  background: #0b0d17; /* ✅ dark navy background */
 }
 
+/* Top “Mac window” buttons */
 .tools {
   display: flex;
   align-items: center;
@@ -44,63 +46,85 @@
   border-radius: 50%;
   margin-right: 6px;
 }
-
-.red { background-color: #ff5f57; }
-.yellow { background-color: #ffbd2e; }
-.green { background-color: #28c840; }
-
-/* Center and justify text */
-.card__content {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 20px;
+.red {
+  background-color: #ff5f57;
+}
+.yellow {
+  background-color: #ffbd2e;
+}
+.green {
+  background-color: #28c840;
 }
 
-.card__content {
-  padding: 1rem 1.5rem;
-  color: #f1f1f1;
+/* === Terminal Text === */
+.card__content.terminal-output {
+  flex: 1;
+  padding: 1.5rem;
   font-family: "Fira Code", "Courier New", monospace;
   font-size: 0.95rem;
   line-height: 1.65rem;
   text-align: left;
-
-  /* ✅ Proper text wrapping and spacing */
   white-space: normal;
   word-break: break-word;
   overflow-wrap: break-word;
-
-  /* ✅ Aesthetic smooth look */
   max-width: 95%;
   margin: 0 auto;
+  min-height: 220px;
+  transition: color 0.3s ease;
 }
 
+/* ✅ Light mode text */
+.card__content.terminal-output {
+  color: #111111;
+}
+
+/* ✅ Dark mode text */
+[data-theme="dark"] .card__content.terminal-output {
+  color: #f1f1f1;
+}
+
+/* Paragraphs inside terminal */
 .about-paragraph {
-  margin-bottom: 1.2rem; /* space between paragraphs */
+  margin-bottom: 1.2rem;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
-
-[data-theme="dark"] .card__content p {
-  color: #e0e0e0;
+/* Fading text (if using paragraph transitions) */
+.fade-text {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
 }
 
-[data-theme="light"] .card__content p {
-  color: #333;
+/* Cursor blink */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  background-color: #00bfff;
+  margin-left: 3px;
+  animation: blink 1s step-end infinite;
+  height: 1rem;
+  vertical-align: middle;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
-/* Right side (slideshow) */
+/* === Right Side (Image Slideshow) === */
 .image-area {
   flex: 1 1 50%;
   position: relative;
-  background: #000;
+  background: #f8f8f8; /* ✅ light gray for light mode */
+  transition: background 0.3s ease;
 }
 
-[data-theme="light"] .image-area {
-  background: #e0e0e0;
+[data-theme="dark"] .image-area {
+  background: #000; /* ✅ dark mode image bg */
 }
 
-/* All images, stacked */
 .image-area img {
   position: absolute;
   top: 0;
@@ -112,75 +136,25 @@
   transition: opacity 1s ease;
 }
 
-/* Active image */
 .image-area img.active {
   opacity: 1;
 }
 
-/* Caption overlay */
+/* Caption below image */
 .caption {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(255,255,255,0.75);
-  color: #333;
+  background: rgba(255, 255, 255, 0.8);
+  color: #111;
   padding: 10px;
   font-size: 0.9rem;
   font-weight: 500;
   text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 [data-theme="dark"] .caption {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: #eee;
-}
-
-.card__content.terminal-output {
-  padding: 1.5rem;
-  color: #f1f1f1;
-  font-family: "Fira Code", monospace;
-  font-size: 0.95rem;
-  line-height: 1.65rem;
-  text-align: left;
-  min-height: 200px;
-  transition: color 0.3s ease;
-  overflow: hidden;
-}
-
-/* Fading effect for each paragraph */
-.fade-text {
-  opacity: 1;
-  transition: opacity 0.4s ease-in-out;
-}
-
-.about-paragraph {
-  white-space: normal;
-  word-break: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Blinking cursor */
-.cursor {
-  display: inline-block;
-  width: 10px;
-  background-color: #00bfff;
-  margin-left: 3px;
-  animation: blink 1s step-end infinite;
-  height: 1rem;
-  vertical-align: middle;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-/* Optional: make it smoother on dark background */
-.text-area {
-  background: #0e0e11;
-  border-radius: 0 0 0 16px;
-}
-[data-theme="dark"] .text-area {
-  background: #0b0d17;
 }
