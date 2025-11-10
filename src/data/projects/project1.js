@@ -9,7 +9,7 @@ const project1 = {
     "Presented at the 2025 TDK Student Scientific Conference (Special Mention, Software Technology Division)."
   ],
   techStack: ["python", "fastapi", "react", "docker", "mongodb", "ethereum"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/medledger_logo.png" // ✅ now valid JS
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/medLedger_logo.png" // ✅ now valid JS
 };
 
 export default project1;

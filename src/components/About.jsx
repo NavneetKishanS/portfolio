@@ -23,23 +23,19 @@ export default function About() {
     const currentParagraph = paragraphs[paragraphIndex];
 
     if (!isDeleting && displayText.length < currentParagraph.length) {
-      // typing forward
       const timeout = setTimeout(() => {
         setDisplayText(currentParagraph.slice(0, displayText.length + 1));
       }, 25);
       return () => clearTimeout(timeout);
     } else if (!isDeleting && displayText.length === currentParagraph.length) {
-      // pause before deleting
       const hold = setTimeout(() => setIsDeleting(true), 2500);
       return () => clearTimeout(hold);
     } else if (isDeleting && displayText.length > 0) {
-      // deleting backward
       const del = setTimeout(() => {
         setDisplayText(displayText.slice(0, -2));
       }, 15);
       return () => clearTimeout(del);
     } else if (isDeleting && displayText.length === 0) {
-      // move to next paragraph
       setIsDeleting(false);
       setParagraphIndex((prev) => (prev + 1) % paragraphs.length);
     }
@@ -67,12 +63,18 @@ export default function About() {
           {aboutImages.map((img, index) => (
             <img
               key={img.filename}
-              src={`/images/about/${img.filename}`}
-              alt={img.caption}
+              src={`${process.env.PUBLIC_URL}/images/about/${img.filename}`} // ✅ fixed path
+              alt={img.caption || "About image"}
               className={index === current ? "active" : ""}
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+              }} // optional graceful fallback
             />
           ))}
-          <div className="caption">{aboutImages[current].caption}</div>
+
+          {aboutImages[current] && (
+            <div className="caption">{aboutImages[current].caption}</div>
+          )}
         </div>
       </div>
     </section>
