@@ -12,15 +12,15 @@ const educationData = [
 //     ]
 //   },
   {
-    degree: "BSc in Software Engineering",
-    institution: "ABC College",
-    location: "Toronto, Canada",
-    duration: "2018 – 2022",
+    degree: "BSc in Computer Science",
+    institution: "Eötvös Loránd University (ELTE)",
+    location: "Budapest, Hungary",
+    duration: "2022 – 2025",
     logo: "/logos/ELTE_logo.png", // place this in public/logos/
     description: [
-      "Graduated with First Class Honours.",
-      "Coursework: Data Structures, Web Development, Databases.",
-      "Final year project: Open-source web-based note-taking app."
+      "Grade: 4.0/5.0 (≈ 2.0 in Bavarian system)",
+      // "Coursework: Data Structures, Web Development, Databases.",
+      "Thesis: MedLedger: A Secure, Modular EHR System — Designed a scalable, containerized EHR integrating HL7 FHIR standards, blockchain-based audit logging, and ML-driven anomaly detection; presented at the 2025 TDK Student Scientific Conference (Special Mention, Software Technology Division)."
     ]
   }
 ];
