@@ -1,6 +1,6 @@
 import React from 'react';
 import './Experience.css';
-import experienceData from '../data/experience.json';
+import experienceData from '../data/experienceData.js';
 import { motion } from 'framer-motion';
 
 const Experience = () => {

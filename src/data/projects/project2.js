@@ -1,13 +1,16 @@
-{
-  "id": "project2",
-  "title": "Safari: Modular, Object-Oriented Simulation Game with Dynamic AI Systems and Real-Time Pathfinding Architecture",
-  "dates": "Feb 2025 – May 2025",
-  "description": [
+const project2 = {
+  id: "project2",
+  title:
+    "Safari: Modular, Object-Oriented Simulation Game with Dynamic AI Systems and Real-Time Pathfinding Architecture",
+  dates: "Feb 2025 – May 2025",
+  description: [
     "Developed a 2D top-down management simulation game where players operate a virtual safari park managing animals, tourists, and resources.",
     "Engineered a modular, object-oriented architecture in Python for scalability and maintainability.",
     "Implemented dynamic AI systems and real-time pathfinding for autonomous entity behavior and interactions.",
     "Added a persistent save/load system using JSON serialization and optimized performance for cross-platform deployment with Pygame."
   ],
-  "techStack": ["python", "gitlab", "json", "ai"],
-  "thumbnail": "/images/projects/safari.png"
-}
+  techStack: ["python", "gitlab", "json", "ai"],
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/safari.png" // ✅ now works locally + on GitHub Pages
+};
+
+export default project2;

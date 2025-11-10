@@ -1,13 +1,15 @@
-{
-  "id": "project5",
-  "title": "Rabin Cryptosystem and Rabin Digital Signature Algorithm",
-  "dates": "May 2024 – Jun 2024",
-  "description": [
+const project5 = {
+  id: "project5",
+  title: "Rabin Cryptosystem and Rabin Digital Signature Algorithm",
+  dates: "May 2024 – Jun 2024",
+  description: [
     "Developed an advanced cryptographic system implementing the Rabin Cryptosystem and Digital Signature Algorithm using Python and SageMath.",
     "Utilized asymmetric encryption based on the computational hardness of integer factorization, generating Blum primes and secure key pairs.",
     "Implemented encryption, decryption, and verification with the Chinese Remainder Theorem for efficient computation and accuracy.",
     "Applied randomized hashing and quadratic residue checks to ensure integrity and authenticity in digital signatures."
   ],
-  "techStack": ["python", "sagemath", "cryptography"],
-  "thumbnail": "/images/projects/rabin.png"
-}
+  techStack: ["python", "sagemath", "cryptography"],
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/rabin.png" // ✅ resolves locally + on GitHub Pages
+};
+
+export default project5;

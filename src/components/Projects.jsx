@@ -7,8 +7,11 @@ export default function Projects() {
 
   useEffect(() => {
     try {
-      const context = require.context("../data/projects", false, /\.json$/);
-      const loaded = context.keys().map((key) => context(key));
+      const context = require.context("../data/projects", false, /\.js$/); // <-- from .json to .js
+      const loaded = context.keys().map((key) => {
+        const mod = context(key);
+        return mod.default || mod; // <-- get default export
+      });
       setProjects(loaded);
     } catch (err) {
       console.error("Failed to load projects:", err);
@@ -52,7 +55,7 @@ export default function Projects() {
                     {(proj.techStack || []).map((tech, idx) => (
                       <img
                         key={idx}
-                        src={`/logos/${tech}.svg`}
+                        src={`${process.env.PUBLIC_URL}/logos/${tech}.svg`} // <-- fix for GH Pages
                         alt={tech}
                         className="tech-logo"
                       />
