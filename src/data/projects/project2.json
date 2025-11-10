@@ -1,12 +1,13 @@
 {
   "id": "project2",
-  "title": "Task Manager 2",
-  "dates": "Jan 2023 – May 2023",
+  "title": "Safari: Modular, Object-Oriented Simulation Game with Dynamic AI Systems and Real-Time Pathfinding Architecture",
+  "dates": "Feb 2025 – May 2025",
   "description": [
-    "Built a task management tool using React.",
-    "Implemented drag and drop features with DnD kit.",
-    "Integrated Firebase for authentication and storage."
+    "Developed a 2D top-down management simulation game where players operate a virtual safari park managing animals, tourists, and resources.",
+    "Engineered a modular, object-oriented architecture in Python for scalability and maintainability.",
+    "Implemented dynamic AI systems and real-time pathfinding for autonomous entity behavior and interactions.",
+    "Added a persistent save/load system using JSON serialization and optimized performance for cross-platform deployment with Pygame."
   ],
-  "techStack": ["react", "firebase", "tailwindcss"],
-  "thumbnail": "/images/projects/taskmanager.png"
+  "techStack": ["python", "gitlab", "json", "ai"],
+  "thumbnail": "/images/projects/safari.png"
 }

@@ -1,12 +1,13 @@
 {
   "id": "project1",
-  "title": "Task Manager",
-  "dates": "Jan 2023 – May 2023",
+  "title": "MedLedger: A Secure, Modular EHR System Integrating FHIR Standards and Blockchain Auditability",
+  "dates": "Mar 2025 – May 2025",
   "description": [
-    "Built a task management tool using React.",
-    "Implemented drag and drop features with DnD kit.",
-    "Integrated Firebase for authentication and storage."
+    "Developed a secure, modular Electronic Health Record (EHR) system with containerized microservices.",
+    "Integrated HL7 FHIR standards for interoperability and blockchain-based audit logging for data integrity.",
+    "Implemented ML-driven anomaly detection to enhance security and reliability.",
+    "Presented at the 2025 TDK Student Scientific Conference (Special Mention, Software Technology Division)."
   ],
-  "techStack": ["react", "firebase", "tailwindcss"],
-  "thumbnail": "/images/projects/taskmanager.png"
+  "techStack": ["python", "fastapi", "react", "docker", "mongodb", "ethereum"],
+  "thumbnail": "/images/projects/medledger_logo.png"
 }
