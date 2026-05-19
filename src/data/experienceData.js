@@ -1,5 +1,14 @@
 const experienceData = [
   {
+    role: "Working Student - Diagnostic Imaging Digital and Automation Platforms",
+    company: "Siemens Healthineers",
+    start: "2026-02",
+    end: "present",
+    description:
+      "Working on developing pipelines for data analysis, data preparation for developing ML models for identifying business insights and VR Simulations.",
+    logo: process.env.PUBLIC_URL + "/logos/siemens-healthineers.png"
+  },
+  {
     role: "Quantitative Developer Intern",
     company: "Citibank",
     start: "2024-06",
