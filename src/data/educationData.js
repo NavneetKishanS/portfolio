@@ -4,10 +4,9 @@ const educationData = [
     institution: "Friedrich-Alexander University Erlangen-Nürnberg (FAU)",
     location: "Erlangen, Bavaria, Germany",
     duration: "2025 – present",
-    logo: process.env.PUBLIC_URL + "/logos/fau_logo.png", // ✅ works locally + on GitHub Pages
+    logo: process.env.PUBLIC_URL + "/logos/fau_logo.jpg", // ✅ works locally + on GitHub Pages
     description: [
       "Specialising in AI, ML and Medical Image Processing.",
-      ""
     ]
   },
   {
