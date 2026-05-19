@@ -1,8 +1,9 @@
 {
   "paragraphs": [
-    "    CS graduate, Ex-Quantitative Developer Intern at Citibank, Python and Java(OOP) Instructor at ELTE Faculty of Informatics.",
-"Driven by a deep passion for technology, healthcare, mathematics, and innovation, my experience spans key programming languages like Python, C#, Java, and C, along with web technologies such as HTML, CSS, JavaScript, Node.js, React.js, and other tools like MongoDB, Git, and REST APIs.",
-"I’m a curious and proactive learner, always eager to expand my skill set and take on new challenges. My strong problem-solving, analytical, and organizational abilities enable me to excel both independently and in diverse, collaborative teams.",
-"Fluent in English (IELTS band 8.5/CEFR C2), I thrive in multicultural environments and am always open to connecting with professionals who share my enthusiasm for technology."
+    "I'm a Computer Scientist building at the intersection of healthcare technology, software engineering, machine learning and data science.",
+    "Currently a Working Student at Siemens Healthineers in the Diagnostic Imaging Digital & Automation Platforms team, while pursuing my MSc in Data Science at FAU Erlangen-Nürnberg. My research focuses on medical imaging, image processing, healthcare AI, and secure interoperable health infrastructure. My bachelor's thesis, MedLedger, is a FHIR-compliant, blockchain-backed EHR platform that received a Special Mention at the TDK Scientific Conference at Siemens, Budapest.",
+    "Previously, I worked as a Quantitative Developer at Citibank's Market Quant Analysis department, contributing to software engineering in the Cross Asset Development team at the intersection of technology and quantitative finance, developing tools for identifying hotspots across diverse asset classes. I've also taught Object-Oriented Programming (OOP) and Python to 140+ students at ELTE Faculty of Informatics, an experience that sharpened my ability to communicate complex ideas clearly.",
+    "Core stack: Python, C#, Java, FastAPI, React, Docker, REST APIs, with hands-on experience in FHIR standards and blockchain smart contracts.",
+    "I'm drawn to roles with tangible impact, particularly in digital health, medical image processing, secure data systems, and automation. Always open to a conversation and open to joining conferences and hackathons in Europe."
   ]
 }
