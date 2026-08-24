@@ -1,89 +1,86 @@
-.hero {
-  background: rgba(135, 206, 250, 0.2); /* Light blue transparent */
-  border-radius: 12px;
-  padding: 40px;
-  margin: 40px auto;
-  max-width: 1100px;
-  display: flex;
-  justify-content: center;
+/* ==========================================================================
+   Design tokens
+   Centralized colors, type, spacing and motion values for both themes.
+   Components should prefer these variables over hardcoded hex values.
+   ========================================================================== */
+
+:root {
+  /* Typography */
+  --font-primary: "Inter", "Helvetica Neue", "Segoe UI", sans-serif;
+  --font-mono: "Fira Code", "Source Code Pro", "Courier New", monospace;
+
+  /* Light theme palette */
+  --color-bg: #f4f6fa;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f9fafb;
+  --color-text: #14161a;
+  --color-text-muted: #565b66;
+  --color-border: #e6e8ec;
+  --color-accent: #007bff;
+  --color-accent-soft: rgba(0, 123, 255, 0.12);
+  --color-accent-contrast: #ffffff;
+
+  /* Elevation / motion */
+  --shadow-sm: 0 4px 12px rgba(17, 24, 39, 0.06);
+  --shadow-md: 0 8px 28px rgba(17, 24, 39, 0.09);
+  --shadow-glow: 0 0 24px rgba(0, 123, 255, 0.18);
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.35s ease;
+
+  color-scheme: light;
 }
 
-.hero-content {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+[data-theme="dark"] {
+  --color-bg: #0b0d13;
+  --color-surface: #12141c;
+  --color-surface-alt: #171a24;
+  --color-text: #f1f1f1;
+  --color-text-muted: #a7abb6;
+  --color-border: #262a35;
+  --color-accent: #00bfff;
+  --color-accent-soft: rgba(0, 191, 255, 0.15);
+  --color-accent-contrast: #06121c;
+
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 24px rgba(0, 191, 255, 0.3);
+
+  color-scheme: dark;
 }
 
-.hero-text {
-  max-width: 500px;
+/* Page-level background so the space around floating cards matches the
+   active theme instead of defaulting to the browser's white canvas. */
+html {
+  background-color: var(--color-bg);
 }
 
-.hero-text p {
-  margin: 0.5em 0;
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
-.hero-text h1 {
-  font-size: 2rem;
-  margin: 0.2em 0;
+/* Respect user motion preferences globally; individual animated components
+   also check this via matchMedia for JS-driven effects (typewriter, marquee). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1em;
+html {
+  scroll-behavior: smooth;
 }
 
-.hero-buttons .primary {
-  background: var(--text-color);
-  color: var(--background-color);
-  border: none;
-  padding: 8px 16px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.hero-buttons .secondary {
-  background: transparent;
-  border: 1px solid var(--text-color);
-  padding: 8px 16px;
-  cursor: pointer;
-  color: var(--text-color);
-}
-
-.hero-icons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1em;
-}
-
-.hero-icons img {
-  width: 24px;
-  height: 24px;
-  transition: transform 0.2s ease;
-  cursor: pointer;
-}
-
-/* Colored fallback if SVG doesn't invert well */
-.hero-icons .github {
-  filter: none;
-  fill: #181717;
-}
-.hero-icons .linkedin {
-  filter: none;
-  fill: #0077B5;
-}
-.hero-icons .kaggle {
-  filter: none;
-  fill: #20BEFF;
-}
-.hero-icons .researchgate {
-  filter: none;
-  fill: #00CCBB;
-}
-
-/* Optional hover scale */
-.hero-icons img:hover {
-  transform: scale(1.2);
+/* Keep anchored sections clear of the sticky header on jump-to-section nav */
+section[id] {
+  scroll-margin-top: 96px;
 }

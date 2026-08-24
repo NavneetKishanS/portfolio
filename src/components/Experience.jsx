@@ -17,8 +17,8 @@ const Experience = () => {
               className={`timeline-item ${side}`}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, ease: 'easeOut', delay: (index % 2) * 0.1 }}
             >
               <div className="timeline-logo">
                 <img src={exp.logo} alt={`${exp.company} logo`} />

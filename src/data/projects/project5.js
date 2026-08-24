@@ -9,7 +9,7 @@ const project5 = {
     "Applied randomized hashing and quadratic residue checks to ensure integrity and authenticity in digital signatures."
   ],
   techStack: ["python", "sagemath", "cryptography"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/rabin.png" // ✅ resolves locally + on GitHub Pages
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/rabin.jpg" // ✅ resolves locally + on GitHub Pages
 };
 
 export default project5;

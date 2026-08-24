@@ -2,20 +2,14 @@
 .projects-section {
   padding: 4rem 2rem;
   text-align: center;
-  background-color: #ffffff;
-  color: #000000;
-  border-radius: 16px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius-lg);
   max-width: 1100px; /* ✅ consistent width */
   margin: 0 auto 60px auto;
-  transition: background 0.3s ease, color 0.3s ease;
-  font-family: var(--font-primary, "Inter", "Helvetica Neue", sans-serif);
-}
-
-/* === Dark Mode Section === */
-[data-theme="dark"] .projects-section {
-  background-color: #0b0d17; /* ✅ navy-dark like Experience */
-  color: #ffffff;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-sm);
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  font-family: var(--font-primary);
 }
 
 .section-title {
@@ -29,6 +23,20 @@
   overflow: hidden;
   width: 100%;
   position: relative;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 64px,
+    #000 calc(100% - 64px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 64px,
+    #000 calc(100% - 64px),
+    transparent 100%
+  );
 }
 
 .projects-scroll-wrapper.paused .projects-scroll {
@@ -54,25 +62,23 @@
 
 /* === Project Card === */
 .project-card {
-  background-color: #ffffff;
-  color: #111111;
+  background-color: var(--color-surface);
+  color: var(--color-text);
   border-radius: 1rem;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
   width: 320px;
   flex-shrink: 0;
   transition:
     box-shadow 0.3s ease,
-    transform 0.3s ease,
     background-color 0.3s ease,
     color 0.3s ease;
-  font-family: var(--font-primary, "Inter", "Helvetica Neue", sans-serif);
+  font-family: var(--font-primary);
 }
 
 .project-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 25px rgba(0, 191, 255, 0.4);
+  box-shadow: var(--shadow-glow);
 }
 
 .project-thumbnail {
@@ -97,20 +103,20 @@
 
 .project-dates {
   font-size: 0.9rem;
-  color: #555;
+  color: var(--color-text-muted);
   margin-top: -4px;
   font-weight: 400;
 }
 
 .project-desc {
   list-style-type: disc;
-  font-family: monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   text-align: left;
   padding-left: 1.2rem;
   margin-top: 0.5rem;
   line-height: 1.45rem;
-  color: #333;
+  color: var(--color-text-muted);
 }
 
 .tech-logos {
@@ -124,25 +130,6 @@
 .tech-logo {
   width: 24px;
   height: 24px;
-}
-
-/* === Dark Mode Cards === */
-[data-theme="dark"] .project-card {
-  background-color: #171a24; /* ✅ Same as Experience cards */
-  color: #ffffff;
-  border: 1px solid #2d2d2d;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.04);
-}
-
-/* Ensure all text is bright white for dark mode */
-[data-theme="dark"] .project-card,
-[data-theme="dark"] .project-card * {
-  color: #ffffff !important;
-}
-
-/* Hover glow */
-[data-theme="dark"] .project-card:hover {
-  box-shadow: 0 0 20px rgba(0, 191, 255, 0.35);
 }
 
 /* === Responsive === */

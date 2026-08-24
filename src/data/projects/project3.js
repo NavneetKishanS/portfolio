@@ -8,7 +8,7 @@ const project3 = {
     "Integrated a MySQL database using JDBC to persist player progress, compute high scores, and optimize query performance for real-time data retrieval."
   ],
   techStack: ["java", "mysql", "jdbc"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/labyrinth.png" // ✅ works locally + on GitHub Pages
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/labyrinth.jpg" // ✅ works locally + on GitHub Pages
 };
 
 export default project3;

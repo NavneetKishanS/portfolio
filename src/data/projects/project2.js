@@ -10,7 +10,7 @@ const project2 = {
     "Added a persistent save/load system using JSON serialization and optimized performance for cross-platform deployment with Pygame."
   ],
   techStack: ["python", "gitlab", "json", "ai"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/safari.png" // ✅ now works locally + on GitHub Pages
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/safari.jpg" // ✅ now works locally + on GitHub Pages
 };
 
 export default project2;

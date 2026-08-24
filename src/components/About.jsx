@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import aboutImages from "../data/aboutImages.json";
 import aboutText from "../data/aboutText.json";
 import "./About.css";
 
+const prefersReducedMotion =
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export default function About() {
   const [current, setCurrent] = useState(0); // slideshow
-  const [displayText, setDisplayText] = useState(""); // text being typed
+  const [displayText, setDisplayText] = useState(
+    prefersReducedMotion ? aboutText.paragraphs[0] : ""
+  );
   const [paragraphIndex, setParagraphIndex] = useState(0); // current para
   const [isDeleting, setIsDeleting] = useState(false);
+  const cardRef = useRef(null);
 
   // rotate images
   useEffect(() => {
@@ -19,6 +27,8 @@ export default function About() {
 
   // typing + fade cycle
   useEffect(() => {
+    if (prefersReducedMotion) return; // static full paragraph, no timers
+
     const paragraphs = aboutText.paragraphs;
     const currentParagraph = paragraphs[paragraphIndex];
 
@@ -41,9 +51,25 @@ export default function About() {
     }
   }, [displayText, isDeleting, paragraphIndex]);
 
+  // subtle cursor-tracking spotlight on the terminal card
+  const handleMouseMove = (e) => {
+    if (prefersReducedMotion || !cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    cardRef.current.style.setProperty("--spot-x", `${e.clientX - rect.left}px`);
+    cardRef.current.style.setProperty("--spot-y", `${e.clientY - rect.top}px`);
+  };
+
   return (
     <section id="about" className="about-section">
-      <div className="about-card">
+      <motion.div
+        className="about-card"
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         {/* Left: Text area */}
         <div className="text-area">
           <div className="tools">
@@ -54,7 +80,7 @@ export default function About() {
 
           <div className="card__content terminal-output">
             <p className="about-paragraph fade-text">{displayText}</p>
-            <span className="cursor">|</span>
+            {!prefersReducedMotion && <span className="cursor" />}
           </div>
         </div>
 
@@ -63,12 +89,13 @@ export default function About() {
           {aboutImages.map((img, index) => (
             <img
               key={img.filename}
-              src={`${process.env.PUBLIC_URL}/images/about/${img.filename}`} // ✅ fixed path
+              src={`${process.env.PUBLIC_URL}/images/about/${img.filename}`}
               alt={img.caption || "About image"}
               className={index === current ? "active" : ""}
+              loading="lazy"
               onError={(e) => {
                 e.currentTarget.style.display = "none";
-              }} // optional graceful fallback
+              }}
             />
           ))}
 
@@ -76,7 +103,7 @@ export default function About() {
             <div className="caption">{aboutImages[current].caption}</div>
           )}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
