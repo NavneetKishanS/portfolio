@@ -30,15 +30,6 @@
   --color-accent-soft: rgba(0, 123, 255, 0.12);
   --color-accent-contrast: #ffffff;
 
-  /* Fixed-dark tokens for the inverted "bookend" sections (Hero/Statement/
-     Contact) — deliberately independent of the light/dark toggle, echoing
-     Apple's contrast sections rather than following the page theme. */
-  --ink-bg: #08090d;
-  --ink-text: #f5f5f7;
-  --ink-text-muted: #989aa3;
-  --ink-border: rgba(255, 255, 255, 0.1);
-  --ink-accent: #2dd4ff;
-
   /* Elevation / motion */
   --shadow-sm: 0 4px 12px rgba(17, 24, 39, 0.06);
   --shadow-md: 0 8px 28px rgba(17, 24, 39, 0.09);
@@ -47,6 +38,9 @@
   --radius-md: 12px;
   --transition-fast: 0.2s ease;
   --transition-base: 0.35s ease;
+
+  /* Neutralizes dark-on-dark SVG icons (e.g. simple-icons) per theme */
+  --icon-filter: none;
 
   color-scheme: light;
 }
@@ -65,6 +59,8 @@
   --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.45);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 24px rgba(0, 191, 255, 0.3);
+
+  --icon-filter: invert(1) brightness(1.5);
 
   color-scheme: dark;
 }
@@ -112,8 +108,11 @@ section[id] {
   padding: 0 32px;
 }
 
-.section-inverted {
-  background: var(--ink-bg);
-  color: var(--ink-text);
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.5px;
+  margin: 0 0 20px;
 }
 

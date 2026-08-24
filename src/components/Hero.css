@@ -4,14 +4,20 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  background: var(--color-bg);
   font-family: var(--font-primary);
 }
 
+/* Subtle grid texture — line color derives from the text color so it stays
+   faint and correct in both themes instead of assuming a dark backdrop. */
 .hero-grid {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-image: linear-gradient(
+      color-mix(in srgb, var(--color-text) 6%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-text) 6%, transparent) 1px, transparent 1px);
   background-size: 56px 56px;
   -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 75%);
   mask-image: radial-gradient(ellipse at center, #000 0%, transparent 75%);
@@ -34,20 +40,12 @@
   max-width: 640px;
 }
 
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--ink-accent);
-  letter-spacing: 0.5px;
-  margin: 0 0 20px;
-}
-
 .hero-text h1 {
   font-size: var(--text-display);
   line-height: 1.04;
   letter-spacing: var(--tracking-tight);
   margin: 0 0 22px;
-  color: var(--ink-text);
+  color: var(--color-text);
   font-weight: 700;
 }
 
@@ -56,13 +54,13 @@
   align-items: center;
   gap: 4px;
   font-size: 1.3rem;
-  color: var(--ink-text-muted);
+  color: var(--color-text-muted);
   margin: 0 0 40px;
   font-weight: 400;
 }
 
 .typed-text {
-  color: var(--ink-text);
+  color: var(--color-text);
   font-weight: 600;
   letter-spacing: 0.3px;
 }
@@ -72,7 +70,7 @@
   top: -1px;
   width: 2px;
   height: 1.2rem;
-  background: var(--ink-accent);
+  background: var(--color-accent);
   animation: blink 0.9s steps(1) infinite;
 }
 
@@ -109,25 +107,25 @@
 }
 
 .hero-buttons .primary {
-  background: var(--ink-text);
-  color: var(--ink-bg);
-  border: 1px solid var(--ink-text);
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: 1px solid var(--color-text);
 }
 
 .hero-buttons .primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(245, 245, 247, 0.18);
+  box-shadow: var(--shadow-md);
 }
 
 .hero-buttons .secondary {
   background: transparent;
-  border: 1px solid var(--ink-border);
-  color: var(--ink-text);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
 }
 
 .hero-buttons .secondary:hover {
-  border-color: var(--ink-accent);
-  color: var(--ink-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
 .hero-icons-row {
@@ -142,12 +140,13 @@
 .hero-icons-row img {
   width: 22px;
   height: 22px;
-  filter: invert(1) grayscale(1) opacity(0.6);
-  transition: filter var(--transition-fast);
+  filter: var(--icon-filter);
+  opacity: 0.6;
+  transition: opacity var(--transition-fast);
 }
 
 .hero-icons-row a:hover img {
-  filter: invert(58%) sepia(84%) saturate(1000%) hue-rotate(160deg) brightness(1.05);
+  opacity: 1;
 }
 
 /* Profile Image */
@@ -160,8 +159,8 @@
   height: 260px;
   border-radius: 50%;
   padding: 4px;
-  background: conic-gradient(from 180deg, var(--ink-accent), transparent 60%, var(--ink-accent));
-  box-shadow: 0 0 70px rgba(45, 212, 255, 0.22);
+  background: conic-gradient(from 180deg, var(--color-accent), transparent 60%, var(--color-accent));
+  box-shadow: var(--shadow-glow);
 }
 
 .hero-image img {
@@ -170,7 +169,7 @@
   border-radius: 50%;
   object-fit: cover;
   display: block;
-  border: 4px solid var(--ink-bg);
+  border: 4px solid var(--color-bg);
 }
 
 .scroll-cue {
@@ -185,7 +184,7 @@
   display: block;
   width: 22px;
   height: 34px;
-  border: 1.5px solid var(--ink-border);
+  border: 1.5px solid var(--color-border);
   border-radius: 12px;
   position: relative;
 }
@@ -197,7 +196,7 @@
   left: 50%;
   width: 3px;
   height: 7px;
-  background: var(--ink-accent);
+  background: var(--color-accent);
   border-radius: 2px;
   transform: translateX(-50%);
   animation: scroll-cue-move 1.8s ease-in-out infinite;

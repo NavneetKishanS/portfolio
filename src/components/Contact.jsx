@@ -5,7 +5,7 @@ import { FaGithub, FaLinkedin, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Contact() {
   return (
-    <section id="contact" className="contact-section section-inverted">
+    <section id="contact" className="contact-section">
       <div className="container">
         <motion.div
           className="contact-inner"

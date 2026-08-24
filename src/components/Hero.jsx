@@ -60,7 +60,7 @@ export default function Hero() {
   }, [text, isDeleting, index]);
 
   return (
-    <section id="hero" className="hero-section section-inverted" ref={sectionRef}>
+    <section id="hero" className="hero-section" ref={sectionRef}>
       <div className="hero-grid" aria-hidden="true" />
       <motion.div
         className="container hero-inner"
