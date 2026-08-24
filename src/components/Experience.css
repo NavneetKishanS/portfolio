@@ -1,21 +1,18 @@
 /* === Experience Section === */
 .experience-section {
   background: var(--color-surface);
-  padding: 60px 20px;
+  padding: var(--section-pad-y) 0;
   font-family: var(--font-primary);
-  border-radius: var(--radius-lg);
-  max-width: 1100px; /* ✅ consistent width with other sections */
-  margin: 0 auto 60px auto; /* center horizontally + spacing below */
-  box-shadow: var(--shadow-sm);
-  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* === Heading === */
 .experience-section h2 {
   text-align: center;
-  font-size: 2.25rem;
+  font-size: var(--text-h2);
   font-weight: 700;
-  margin-bottom: 60px;
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: 72px;
   color: var(--color-text);
   transition: color 0.3s ease;
 }
@@ -46,19 +43,20 @@
   position: relative;
   width: 46%;
   background: var(--color-surface-alt);
-  padding: 20px;
+  padding: 22px 24px;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
   display: flex;
   align-items: center;
-  margin-bottom: 50px;
-  transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+  margin-bottom: 40px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
   z-index: 1;
 }
 
 .timeline-item:hover {
   box-shadow: var(--shadow-glow);
-  transform: translateY(-5px);
+  border-color: transparent;
+  transform: translateY(-4px);
 }
 
 /* Alignment */

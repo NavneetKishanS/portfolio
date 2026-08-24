@@ -1,7 +1,7 @@
 .about-section {
   display: flex;
   justify-content: center;
-  padding: 60px 20px;
+  padding: var(--section-pad-y) 20px;
   font-family: var(--font-primary);
 }
 
@@ -9,7 +9,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  max-width: 1100px;
+  max-width: var(--content-width);
   height: 400px;
   border-radius: var(--radius-md);
   overflow: hidden;

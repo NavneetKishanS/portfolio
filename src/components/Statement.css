@@ -1,0 +1,24 @@
+.statement-section {
+  background: var(--color-surface-alt);
+  padding: var(--section-pad-y) 0;
+  transition: background var(--transition-base);
+}
+
+.statement-section .container {
+  max-width: 880px;
+}
+
+.statement-section p {
+  font-family: var(--font-primary);
+  font-size: var(--text-h1);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text);
+  text-align: center;
+  margin: 0;
+}
+
+.statement-section .highlight {
+  color: var(--color-accent);
+}

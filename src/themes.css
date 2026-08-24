@@ -9,6 +9,16 @@
   --font-primary: "Inter", "Helvetica Neue", "Segoe UI", sans-serif;
   --font-mono: "Fira Code", "Source Code Pro", "Courier New", monospace;
 
+  /* Editorial type scale — large, tight, confident */
+  --text-display: clamp(2.75rem, 3rem + 3vw, 5.25rem);
+  --text-h1: clamp(2.25rem, 2rem + 2.2vw, 3.75rem);
+  --text-h2: clamp(1.9rem, 1.6rem + 1.6vw, 2.75rem);
+  --tracking-tight: -0.02em;
+
+  /* Vertical rhythm for full-bleed sections */
+  --section-pad-y: clamp(72px, 6vw + 24px, 140px);
+  --content-width: 1120px;
+
   /* Light theme palette */
   --color-bg: #f4f6fa;
   --color-surface: #ffffff;
@@ -19,6 +29,15 @@
   --color-accent: #007bff;
   --color-accent-soft: rgba(0, 123, 255, 0.12);
   --color-accent-contrast: #ffffff;
+
+  /* Fixed-dark tokens for the inverted "bookend" sections (Hero/Statement/
+     Contact) — deliberately independent of the light/dark toggle, echoing
+     Apple's contrast sections rather than following the page theme. */
+  --ink-bg: #08090d;
+  --ink-text: #f5f5f7;
+  --ink-text-muted: #989aa3;
+  --ink-border: rgba(255, 255, 255, 0.1);
+  --ink-accent: #2dd4ff;
 
   /* Elevation / motion */
   --shadow-sm: 0 4px 12px rgba(17, 24, 39, 0.06);
@@ -82,5 +101,19 @@ html {
 
 /* Keep anchored sections clear of the sticky header on jump-to-section nav */
 section[id] {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 72px;
 }
+
+/* Shared layout primitives for full-bleed editorial sections */
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.section-inverted {
+  background: var(--ink-bg);
+  color: var(--ink-text);
+}
+
