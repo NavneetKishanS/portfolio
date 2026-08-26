@@ -1,5 +1,6 @@
 const project2 = {
   id: "project2",
+  slug: "safari-simulation",
   title:
     "Safari: Modular, Object-Oriented Simulation Game with Dynamic AI Systems and Real-Time Pathfinding Architecture",
   dates: "Feb 2025 – May 2025",
@@ -10,7 +11,11 @@ const project2 = {
     "Added a persistent save/load system using JSON serialization and optimized performance for cross-platform deployment with Pygame."
   ],
   techStack: ["python", "gitlab", "json", "ai"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/safari.jpg" // ✅ now works locally + on GitHub Pages
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/safari.jpg", // ✅ now works locally + on GitHub Pages
+  githubUrl: "https://github.com/NavneetKishanS/safari-game",
+  liveUrl: "",
+  sections: [],
+  gallery: []
 };
 
 export default project2;

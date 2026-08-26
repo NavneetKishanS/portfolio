@@ -1,5 +1,6 @@
 const project1 = {
   id: "project1",
+  slug: "medledger",
   title: "MedLedger: A Secure, Modular EHR System Integrating FHIR Standards and Blockchain Auditability",
   dates: "Mar 2025 – May 2025",
   description: [
@@ -9,7 +10,11 @@ const project1 = {
     "Presented at the 2025 TDK Student Scientific Conference (Special Mention, Software Technology Division)."
   ],
   techStack: ["python", "fastapi", "react", "docker", "mongodb", "ethereum"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/medLedger_logo.png" // ✅ now valid JS
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/medLedger_logo.png", // ✅ now valid JS
+  githubUrl: "https://github.com/NavneetKishanS/medledger",
+  liveUrl: "",
+  sections: [],
+  gallery: []
 };
 
 export default project1;

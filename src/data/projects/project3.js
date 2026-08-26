@@ -1,5 +1,6 @@
 const project3 = {
   id: "project3",
+  slug: "labyrinth",
   title: "Labyrinth – Java Swing Based Game",
   dates: "Dec 2024 – Dec 2024",
   description: [
@@ -8,7 +9,11 @@ const project3 = {
     "Integrated a MySQL database using JDBC to persist player progress, compute high scores, and optimize query performance for real-time data retrieval."
   ],
   techStack: ["java", "mysql", "jdbc"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/labyrinth.jpg" // ✅ works locally + on GitHub Pages
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/labyrinth.jpg", // ✅ works locally + on GitHub Pages
+  githubUrl: "https://github.com/NavneetKishanS/labyrinth-java-swing-game",
+  liveUrl: "",
+  sections: [],
+  gallery: []
 };
 
 export default project3;

@@ -1,5 +1,6 @@
 const project5 = {
   id: "project5",
+  slug: "rabin-cryptosystem",
   title: "Rabin Cryptosystem and Rabin Digital Signature Algorithm",
   dates: "May 2024 – Jun 2024",
   description: [
@@ -9,7 +10,11 @@ const project5 = {
     "Applied randomized hashing and quadratic residue checks to ensure integrity and authenticity in digital signatures."
   ],
   techStack: ["python", "sagemath", "cryptography"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/rabin.jpg" // ✅ resolves locally + on GitHub Pages
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/rabin.jpg", // ✅ resolves locally + on GitHub Pages
+  githubUrl: "https://github.com/NavneetKishanS/rabin-cryptosystem",
+  liveUrl: "",
+  sections: [],
+  gallery: []
 };
 
 export default project5;
