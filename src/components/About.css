@@ -77,22 +77,28 @@
 .terminal-toggle {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 22px;
-  padding: 0;
+  gap: 6px;
+  height: 24px;
+  padding: 0 9px;
   border: none;
-  border-radius: 6px;
+  border-radius: 999px;
   background: transparent;
   color: var(--color-text-muted);
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .terminal-toggle:hover {
   background: var(--color-accent-soft);
   color: var(--color-accent);
+}
+
+.terminal-toggle-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
 }
 
 .circle {
@@ -114,17 +120,19 @@
 /* === Terminal Text === */
 .card__content.terminal-output {
   flex: 1;
-  padding: 1.5rem;
+  padding: 1.75rem 2rem;
   font-family: var(--font-mono);
-  font-size: 0.95rem;
-  line-height: 1.65rem;
+  font-size: 1.02rem;
+  line-height: 1.85;
+  letter-spacing: 0.1px;
   text-align: left;
   white-space: normal;
   word-break: break-word;
   overflow-wrap: break-word;
-  max-width: 95%;
+  max-width: 96%;
   margin: 0 auto;
   min-height: 220px;
+  color: var(--color-text);
   transition: color 0.3s ease;
 }
 
@@ -134,16 +142,16 @@
   overflow-y: auto;
 }
 
-.card__content.terminal-output {
-  color: var(--color-text);
-}
-
 /* Paragraphs inside terminal */
 .about-paragraph {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   white-space: normal;
   word-break: break-word;
   overflow-wrap: break-word;
+}
+
+.about-paragraph:last-child {
+  margin-bottom: 0;
 }
 
 /* Fading text (if using paragraph transitions) */

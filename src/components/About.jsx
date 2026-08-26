@@ -95,6 +95,9 @@ export default function About() {
               title={staticView ? "Play typing animation" : "Pause and read as plain text"}
               aria-label={staticView ? "Play typing animation" : "Pause and read as plain text"}
             >
+              <span className="terminal-toggle-label">
+                {staticView ? "Play animation" : "Read as text"}
+              </span>
               {staticView ? <FaTerminal /> : <FaAlignLeft />}
             </button>
           </div>
