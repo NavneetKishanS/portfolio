@@ -2,6 +2,7 @@ const experienceData = [
   {
     role: "Working Student - Diagnostic Imaging Digital and Automation Platforms",
     company: "Siemens Healthineers",
+    location: "Erlangen, Germany", // TODO: confirm
     start: "2026-02",
     end: "present",
     description: [
@@ -13,6 +14,7 @@ const experienceData = [
   {
     role: "Quantitative Developer Intern",
     company: "Citibank",
+    location: "Budapest, Hungary", // TODO: confirm
     start: "2024-06",
     end: "2025-03",
     description: [
@@ -24,6 +26,7 @@ const experienceData = [
   {
     role: "Python and Java(OOP) Instructor",
     company: "ELTE Faculty of Informatics",
+    location: "Budapest, Hungary",
     start: "2025-02",
     end: "2025-06",
     description: [
@@ -36,6 +39,7 @@ const experienceData = [
   {
     role: "Technical Lead",
     company: "Google Developers Group, on Campus ELTE",
+    location: "Budapest, Hungary",
     start: "2024-10",
     end: "2025-06",
     description: [
