@@ -121,10 +121,10 @@
 .card__content.terminal-output {
   flex: 1;
   padding: 1.75rem 2rem;
-  font-family: var(--font-mono);
+  font-family: var(--font-primary);
   font-size: 1.02rem;
-  line-height: 1.85;
-  letter-spacing: 0.1px;
+  line-height: 1.7;
+  letter-spacing: normal;
   text-align: left;
   white-space: normal;
   word-break: break-word;
