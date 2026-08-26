@@ -9,7 +9,7 @@ const prefersReducedMotion =
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const TYPE_MS_PER_CHAR = 12;
+const TYPE_MS_PER_CHAR = 38;
 const DELETE_MS_PER_CHAR = 6;
 const MIN_HOLD_MS = 2200;
 const HOLD_MS_PER_CHAR = 25; // scales the pause with how much there is to read
@@ -87,6 +87,7 @@ export default function About() {
               <div className="circle yellow"></div>
               <div className="circle green"></div>
             </div>
+            <span className="terminal-title">about.md</span>
             <button
               type="button"
               className="terminal-toggle"
@@ -106,11 +107,13 @@ export default function About() {
             {staticView ? (
               aboutText.paragraphs.map((p, i) => (
                 <p className="about-paragraph" key={i}>
+                  {i === 0 && <span className="terminal-prompt">{">"}</span>}
                   {p}
                 </p>
               ))
             ) : (
               <p className="about-paragraph fade-text">
+                <span className="terminal-prompt">{">"}</span>
                 {displayText}
                 <span className="cursor" />
               </p>
@@ -133,9 +136,23 @@ export default function About() {
             />
           ))}
 
-          {aboutImages[current] && (
-            <div className="caption">{aboutImages[current].caption}</div>
-          )}
+          <div className="caption">
+            {aboutImages[current] && (
+              <span className="caption-text">{aboutImages[current].caption}</span>
+            )}
+            <div className="gallery-dots">
+              {aboutImages.map((img, index) => (
+                <button
+                  key={img.filename}
+                  type="button"
+                  className={`gallery-dot ${index === current ? "active" : ""}`}
+                  onClick={() => setCurrent(index)}
+                  aria-label={`Show photo ${index + 1} of ${aboutImages.length}`}
+                  aria-current={index === current}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>
