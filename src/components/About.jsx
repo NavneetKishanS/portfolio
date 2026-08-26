@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { FaAlignLeft, FaTerminal } from "react-icons/fa";
 import aboutImages from "../data/aboutImages.json";
 import aboutText from "../data/aboutText.json";
 import "./About.css";
@@ -8,13 +9,20 @@ const prefersReducedMotion =
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+const TYPE_MS_PER_CHAR = 38;
+const DELETE_MS_PER_CHAR = 6;
+const MIN_HOLD_MS = 2200;
+const HOLD_MS_PER_CHAR = 25; // scales the pause with how much there is to read
+
 export default function About() {
   const [current, setCurrent] = useState(0); // slideshow
-  const [displayText, setDisplayText] = useState(
-    prefersReducedMotion ? aboutText.paragraphs[0] : ""
-  );
+  const [displayText, setDisplayText] = useState("");
   const [paragraphIndex, setParagraphIndex] = useState(0); // current para
   const [isDeleting, setIsDeleting] = useState(false);
+  // Static view reads the full bio as plain paragraphs, no auto-cycling —
+  // required for WCAG 2.2.2 (auto-updating content must be pausable) and
+  // just easier to read for anyone who doesn't want to chase moving text.
+  const [staticView, setStaticView] = useState(prefersReducedMotion);
   const cardRef = useRef(null);
 
   // rotate images
@@ -27,7 +35,7 @@ export default function About() {
 
   // typing + fade cycle
   useEffect(() => {
-    if (prefersReducedMotion) return; // static full paragraph, no timers
+    if (staticView) return; // paused — plain text view is shown instead
 
     const paragraphs = aboutText.paragraphs;
     const currentParagraph = paragraphs[paragraphIndex];
@@ -35,21 +43,22 @@ export default function About() {
     if (!isDeleting && displayText.length < currentParagraph.length) {
       const timeout = setTimeout(() => {
         setDisplayText(currentParagraph.slice(0, displayText.length + 1));
-      }, 25);
+      }, TYPE_MS_PER_CHAR);
       return () => clearTimeout(timeout);
     } else if (!isDeleting && displayText.length === currentParagraph.length) {
-      const hold = setTimeout(() => setIsDeleting(true), 2500);
+      const holdDuration = Math.max(MIN_HOLD_MS, currentParagraph.length * HOLD_MS_PER_CHAR);
+      const hold = setTimeout(() => setIsDeleting(true), holdDuration);
       return () => clearTimeout(hold);
     } else if (isDeleting && displayText.length > 0) {
       const del = setTimeout(() => {
         setDisplayText(displayText.slice(0, -2));
-      }, 15);
+      }, DELETE_MS_PER_CHAR);
       return () => clearTimeout(del);
     } else if (isDeleting && displayText.length === 0) {
       setIsDeleting(false);
       setParagraphIndex((prev) => (prev + 1) % paragraphs.length);
     }
-  }, [displayText, isDeleting, paragraphIndex]);
+  }, [displayText, isDeleting, paragraphIndex, staticView]);
 
   // subtle cursor-tracking spotlight on the terminal card
   const handleMouseMove = (e) => {
@@ -73,14 +82,42 @@ export default function About() {
         {/* Left: Text area */}
         <div className="text-area">
           <div className="tools">
-            <div className="circle red"></div>
-            <div className="circle yellow"></div>
-            <div className="circle green"></div>
+            <div className="dots">
+              <div className="circle red"></div>
+              <div className="circle yellow"></div>
+              <div className="circle green"></div>
+            </div>
+            <span className="terminal-title">about.md</span>
+            <button
+              type="button"
+              className="terminal-toggle"
+              onClick={() => setStaticView((v) => !v)}
+              aria-pressed={staticView}
+              title={staticView ? "Play typing animation" : "Pause and read as plain text"}
+              aria-label={staticView ? "Play typing animation" : "Pause and read as plain text"}
+            >
+              <span className="terminal-toggle-label">
+                {staticView ? "Play animation" : "Read as text"}
+              </span>
+              {staticView ? <FaTerminal /> : <FaAlignLeft />}
+            </button>
           </div>
 
-          <div className="card__content terminal-output">
-            <p className="about-paragraph fade-text">{displayText}</p>
-            {!prefersReducedMotion && <span className="cursor" />}
+          <div className={`card__content terminal-output ${staticView ? "static" : ""}`}>
+            {staticView ? (
+              aboutText.paragraphs.map((p, i) => (
+                <p className="about-paragraph" key={i}>
+                  {i === 0 && <span className="terminal-prompt">{">"}</span>}
+                  {p}
+                </p>
+              ))
+            ) : (
+              <p className="about-paragraph fade-text">
+                <span className="terminal-prompt">{">"}</span>
+                {displayText}
+                <span className="cursor" />
+              </p>
+            )}
           </div>
         </div>
 
@@ -99,9 +136,23 @@ export default function About() {
             />
           ))}
 
-          {aboutImages[current] && (
-            <div className="caption">{aboutImages[current].caption}</div>
-          )}
+          <div className="caption">
+            {aboutImages[current] && (
+              <span className="caption-text">{aboutImages[current].caption}</span>
+            )}
+            <div className="gallery-dots">
+              {aboutImages.map((img, index) => (
+                <button
+                  key={img.filename}
+                  type="button"
+                  className={`gallery-dot ${index === current ? "active" : ""}`}
+                  onClick={() => setCurrent(index)}
+                  aria-label={`Show photo ${index + 1} of ${aboutImages.length}`}
+                  aria-current={index === current}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </motion.div>
     </section>

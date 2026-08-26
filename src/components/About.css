@@ -12,14 +12,16 @@
   max-width: 1100px;
   height: 400px;
   border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
   --spot-x: 50%;
   --spot-y: 50%;
 }
 
 .about-card:hover {
+  border-color: transparent;
   box-shadow: var(--shadow-glow);
 }
 
@@ -65,7 +67,63 @@
 .tools {
   display: flex;
   align-items: center;
-  padding: 9px;
+  justify-content: space-between;
+  padding: 9px 12px;
+}
+
+.tools .dots {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.terminal-title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.3px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.terminal-toggle {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 6px;
+  height: 24px;
+  padding: 0 9px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  font-size: 0.78rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.terminal-toggle:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.terminal-toggle-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.terminal-toggle:hover .terminal-toggle-label,
+.terminal-toggle:focus-visible .terminal-toggle-label {
+  opacity: 1;
+  visibility: visible;
 }
 
 .circle {
@@ -87,30 +145,64 @@
 /* === Terminal Text === */
 .card__content.terminal-output {
   flex: 1;
-  padding: 1.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.95rem;
-  line-height: 1.65rem;
+  padding: 1.75rem 2rem;
+  font-family: "Sora", var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.75;
+  letter-spacing: normal;
   text-align: left;
   white-space: normal;
   word-break: break-word;
   overflow-wrap: break-word;
-  max-width: 95%;
+  max-width: 96%;
   margin: 0 auto;
   min-height: 220px;
+  color: var(--color-text);
   transition: color 0.3s ease;
 }
 
-.card__content.terminal-output {
-  color: var(--color-text);
+/* Static (paused) view shows every paragraph at once, which can exceed the
+   card's fixed height — scroll within the pane instead of clipping it. */
+.card__content.terminal-output.static {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.card__content.terminal-output.static::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card__content.terminal-output.static::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card__content.terminal-output.static::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+.card__content.terminal-output.static::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
 }
 
 /* Paragraphs inside terminal */
 .about-paragraph {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
   white-space: normal;
   word-break: break-word;
   overflow-wrap: break-word;
+}
+
+.terminal-prompt {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-right: 10px;
+}
+
+.about-paragraph:last-child {
+  margin-bottom: 0;
 }
 
 /* Fading text (if using paragraph transitions) */
@@ -139,6 +231,7 @@
 .image-area {
   flex: 1 1 50%;
   position: relative;
+  overflow: hidden;
   background: var(--color-surface-alt);
   transition: background 0.3s ease;
 }
@@ -156,23 +249,70 @@
 
 .image-area img.active {
   opacity: 1;
+  animation: about-kenburns 6s ease-out forwards;
 }
 
-/* Caption below image */
+@keyframes about-kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+/* Caption + gallery dots overlay */
 .caption {
   position: absolute;
   bottom: 0;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   background: rgba(255, 255, 255, 0.8);
   color: #111;
-  padding: 10px;
+  padding: 10px 12px;
   font-size: 0.9rem;
   font-weight: 500;
-  text-align: center;
+  text-align: left;
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 [data-theme="dark"] .caption {
   background: rgba(0, 0, 0, 0.6);
   color: #eee;
+}
+
+.caption-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.gallery-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.gallery-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+[data-theme="dark"] .gallery-dot {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.gallery-dot.active {
+  background: var(--color-accent);
+  transform: scale(1.3);
 }
