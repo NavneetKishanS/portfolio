@@ -29,7 +29,11 @@ const Experience = () => {
                 </span>
                 <h3>{exp.role}</h3>
                 <h4>{exp.company}</h4>
-                <p>{exp.description}</p>
+                <ul className="timeline-desc">
+                  {exp.description.map((point, i) => (
+                    <li key={i}>{point}</li>
+                  ))}
+                </ul>
               </div>
             </motion.div>
           );
