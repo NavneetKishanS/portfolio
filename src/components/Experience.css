@@ -58,7 +58,7 @@
 
 .timeline-item:hover {
   box-shadow: var(--shadow-glow);
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
 }
 
 /* Alignment — logo stays nearest the timeline spine, but body copy is
@@ -76,14 +76,18 @@
 
 /* === Logo === */
 .timeline-logo img {
-  width: 50px;
-  height: 50px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
   margin: 0 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--color-surface);
-  padding: 6px;
-  transition: background 0.3s ease;
+  padding: 8px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-item:hover .timeline-logo img {
+  transform: scale(1.05);
 }
 
 /* === Content === */
@@ -105,10 +109,10 @@
   transition: color 0.3s ease;
 }
 .timeline-content h4 {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin-bottom: 10px;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   transition: color 0.3s ease;
 }
 
