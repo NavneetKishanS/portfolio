@@ -79,8 +79,10 @@ export default function About() {
           </div>
 
           <div className="card__content terminal-output">
-            <p className="about-paragraph fade-text">{displayText}</p>
-            {!prefersReducedMotion && <span className="cursor" />}
+            <p className="about-paragraph fade-text">
+              {displayText}
+              {!prefersReducedMotion && <span className="cursor" />}
+            </p>
           </div>
         </div>
 
