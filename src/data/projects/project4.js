@@ -1,5 +1,6 @@
 const project4 = {
   id: "project4",
+  slug: "radiology-rag",
   title:
     "Radiology Differential Generator – Evidence-Based Reasoning RAG System",
   dates: "2025",
@@ -9,7 +10,11 @@ const project4 = {
     "Built an explainable Streamlit interface enabling clinicians to validate AI reasoning chains and outputs."
   ],
   techStack: ["python", "langchain", "mistral", "streamlit"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/radiology_rag.jpg" // ✅ resolves locally + on GitHub Pages
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/radiology_rag.jpg", // ✅ resolves locally + on GitHub Pages
+  githubUrl: "https://github.com/NavneetKishanS/radiology-dx-agent",
+  liveUrl: "",
+  sections: [],
+  gallery: []
 };
 
 export default project4;
