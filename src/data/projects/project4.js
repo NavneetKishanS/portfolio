@@ -9,7 +9,7 @@ const project4 = {
     "Built an explainable Streamlit interface enabling clinicians to validate AI reasoning chains and outputs."
   ],
   techStack: ["python", "langchain", "mistral", "streamlit"],
-  thumbnail: process.env.PUBLIC_URL + "/images/projects/radiology_rag.png" // ✅ resolves locally + on GitHub Pages
+  thumbnail: process.env.PUBLIC_URL + "/images/projects/radiology_rag.jpg" // ✅ resolves locally + on GitHub Pages
 };
 
 export default project4;
