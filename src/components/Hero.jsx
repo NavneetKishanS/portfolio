@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import profilePic from "../assets/profile.png";
+import GlowHorizon from "./ui/glow-horizon";
 import "./Hero.css";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/navneet-kishan-s/";
@@ -62,6 +63,10 @@ export default function Hero() {
   return (
     <section id="hero" className="hero-section" ref={sectionRef}>
       <div className="hero-grid" aria-hidden="true" />
+      <GlowHorizon
+        variant="top"
+        className="opacity-0 dark:opacity-100 transition-opacity duration-700"
+      />
       <motion.div
         className="container hero-inner"
         variants={container}
