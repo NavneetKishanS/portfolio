@@ -14,6 +14,14 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [active, setActive] = useState("about");
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const sections = NAV_LINKS.map(({ id }) => document.getElementById(id)).filter(Boolean);
@@ -35,31 +43,35 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="custom-navbar">
-      <div className="navbar-left">
-        <span className="navbar-logo">Navneet's Portfolio</span>
-      </div>
-      <nav className="navbar-center">
-        {NAV_LINKS.map(({ id, label }) => (
-          <a
-            key={id}
-            href={`#${id}`}
-            className={active === id ? "active" : ""}
-            aria-current={active === id ? "true" : undefined}
-          >
-            {label}
-            {active === id && (
-              <motion.span
-                className="nav-underline"
-                layoutId="nav-underline"
-                transition={{ type: "spring", stiffness: 380, damping: 30 }}
-              />
-            )}
+    <header className={`custom-navbar${scrolled ? " scrolled" : ""}`}>
+      <div className="navbar-inner">
+        <div className="navbar-left">
+          <a href="#hero" className="navbar-logo">
+            NKS
           </a>
-        ))}
-      </nav>
-      <div className="navbar-right">
-        <ThemeToggle />
+        </div>
+        <nav className="navbar-center">
+          {NAV_LINKS.map(({ id, label }) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className={active === id ? "active" : ""}
+              aria-current={active === id ? "true" : undefined}
+            >
+              {label}
+              {active === id && (
+                <motion.span
+                  className="nav-underline"
+                  layoutId="nav-underline"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </a>
+          ))}
+        </nav>
+        <div className="navbar-right">
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

@@ -1,74 +1,98 @@
 /* === Section Container === */
 .projects-section {
-  padding: 4rem 2rem;
-  text-align: center;
+  padding: var(--section-pad-y) 0;
   background-color: var(--color-surface);
   color: var(--color-text);
-  border-radius: var(--radius-lg);
-  max-width: 1100px; /* ✅ consistent width */
-  margin: 0 auto 60px auto;
-  box-shadow: var(--shadow-sm);
-  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease;
   font-family: var(--font-primary);
 }
 
-.section-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+.projects-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
 }
 
-/* === Scroll Animation === */
+.section-title {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+}
+
+.projects-nav {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.projects-nav button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.projects-nav button:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* === Horizontal scroll-snap gallery (user-driven, no autoplay) === */
 .projects-scroll-wrapper {
-  overflow: hidden;
   width: 100%;
   position: relative;
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0,
-    #000 64px,
-    #000 calc(100% - 64px),
+    #000 32px,
+    #000 calc(100% - 32px),
     transparent 100%
   );
   mask-image: linear-gradient(
     to right,
     transparent 0,
-    #000 64px,
-    #000 calc(100% - 64px),
+    #000 32px,
+    #000 calc(100% - 32px),
     transparent 100%
   );
 }
 
-.projects-scroll-wrapper.paused .projects-scroll {
-  animation-play-state: paused;
-}
-
 .projects-scroll {
   display: flex;
-  gap: 1rem;
-  animation: scroll-left 35s linear infinite;
-  width: max-content;
-  will-change: transform;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding-bottom: 8px;
+  scrollbar-width: none;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.projects-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.projects-scroll-spacer {
+  flex: 0 0 calc((100vw - min(100vw, var(--content-width)) + 64px) / 2);
 }
 
 /* === Project Card === */
 .project-card {
+  scroll-snap-align: start;
   background-color: var(--color-surface);
   color: var(--color-text);
   border-radius: 1rem;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  width: 320px;
+  width: 340px;
   flex-shrink: 0;
   transition:
     box-shadow 0.3s ease,

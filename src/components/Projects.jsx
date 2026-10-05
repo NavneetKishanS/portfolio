@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import "./Projects.css";
 
@@ -34,7 +34,7 @@ function ProjectCard({ proj }) {
           ? undefined
           : { rotateX, rotateY, transformPerspective: 800 }
       }
-      whileHover={prefersReducedMotion ? undefined : { scale: 1.03 }}
+      whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }}
     >
       {proj.thumbnail && (
         <img
@@ -73,7 +73,7 @@ function ProjectCard({ proj }) {
 
 export default function Projects() {
   const [projects, setProjects] = useState([]);
-  const [isHovered, setIsHovered] = useState(false);
+  const scrollerRef = useRef(null);
 
   useEffect(() => {
     try {
@@ -88,20 +88,38 @@ export default function Projects() {
     }
   }, []);
 
+  const scrollByCard = (direction) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector(".project-card");
+    const step = card ? card.getBoundingClientRect().width + 24 : 320;
+    el.scrollBy({ left: direction * step, behavior: prefersReducedMotion ? "auto" : "smooth" });
+  };
+
   return (
     <section id="projects" className="projects-section">
-      <h2 className="section-title">Projects</h2>
+      <div className="container">
+        <div className="projects-header">
+          <h2 className="section-title">Projects</h2>
+          <div className="projects-nav">
+            <button aria-label="Scroll projects left" onClick={() => scrollByCard(-1)}>
+              ‹
+            </button>
+            <button aria-label="Scroll projects right" onClick={() => scrollByCard(1)}>
+              ›
+            </button>
+          </div>
+        </div>
+      </div>
 
-      <div
-        className={`projects-scroll-wrapper ${isHovered || prefersReducedMotion ? "paused" : ""}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className="projects-scroll">
-          {[...projects, ...projects].map((proj, index) => {
+      <div className="projects-scroll-wrapper">
+        <div className="projects-scroll" ref={scrollerRef}>
+          <div className="projects-scroll-spacer" aria-hidden="true" />
+          {projects.map((proj, index) => {
             if (!proj || !proj.title) return null;
             return <ProjectCard proj={proj} key={index} />;
           })}
+          <div className="projects-scroll-spacer" aria-hidden="true" />
         </div>
       </div>
     </section>

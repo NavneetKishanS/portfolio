@@ -9,6 +9,16 @@
   --font-primary: "Inter", "Helvetica Neue", "Segoe UI", sans-serif;
   --font-mono: "Fira Code", "Source Code Pro", "Courier New", monospace;
 
+  /* Editorial type scale — large, tight, confident */
+  --text-display: clamp(2.75rem, 3rem + 3vw, 5.25rem);
+  --text-h1: clamp(2.25rem, 2rem + 2.2vw, 3.75rem);
+  --text-h2: clamp(1.9rem, 1.6rem + 1.6vw, 2.75rem);
+  --tracking-tight: -0.02em;
+
+  /* Vertical rhythm for full-bleed sections */
+  --section-pad-y: clamp(72px, 6vw + 24px, 140px);
+  --content-width: 1120px;
+
   /* Light theme palette */
   --color-bg: #f4f6fa;
   --color-surface: #ffffff;
@@ -29,6 +39,9 @@
   --transition-fast: 0.2s ease;
   --transition-base: 0.35s ease;
 
+  /* Neutralizes dark-on-dark SVG icons (e.g. simple-icons) per theme */
+  --icon-filter: none;
+
   color-scheme: light;
 }
 
@@ -46,6 +59,8 @@
   --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.45);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
   --shadow-glow: 0 0 24px rgba(0, 191, 255, 0.3);
+
+  --icon-filter: invert(1) brightness(1.5);
 
   color-scheme: dark;
 }
@@ -82,5 +97,22 @@ html {
 
 /* Keep anchored sections clear of the sticky header on jump-to-section nav */
 section[id] {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 72px;
 }
+
+/* Shared layout primitives for full-bleed editorial sections */
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-accent);
+  letter-spacing: 0.5px;
+  margin: 0 0 20px;
+}
+
